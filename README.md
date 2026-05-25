@@ -1,11 +1,4 @@
 # micita_eps_app
 
-iniciar 
-cd micita_eps_app
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
-python manage.py makemigrations accounts citas
-python manage.py migrate
-python populate_synthetic_data.py
-python manage.py runserver
+
+<img width="921" height="384" alt="image" src="https://github.com/user-attachments/assets/ecea6607-3934-47ae-af48-d9ec0fc219ac" />
