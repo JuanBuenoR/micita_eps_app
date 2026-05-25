@@ -1,0 +1,6 @@
+Perfil		  Usuario		    Contraseña	Documento	  Nombres
+Paciente	  ana.lopez    	prueba123	  1012345678	Ana López
+Paciente	  carlos.ruiz  	prueba123	  1023456789	Carlos Ruiz
+Médico		  dra.martinez	prueba123	  2012345678	Dra. Martínez
+Médico		  dr.gomez	    prueba123	  2023456789	Dr. Gómez
+Autorizador	autorizador1	prueba123	  3012345678	Luis Pérez
