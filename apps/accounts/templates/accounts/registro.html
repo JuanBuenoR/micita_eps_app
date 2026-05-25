@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4" style="max-width: 600px;">
+    <h3>Registro de nuevo usuario</h3>
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6 mb-2"><input type="text" name="nombres" placeholder="Nombres" class="form-control" required></div>
+            <div class="col-md-6 mb-2"><input type="text" name="apellidos" placeholder="Apellidos" class="form-control" required></div>
+            <div class="col-md-6 mb-2"><input type="text" name="documento" placeholder="Documento" class="form-control" required></div>
+            <div class="col-md-6 mb-2"><input type="text" name="telefono" placeholder="Teléfono" class="form-control"></div>
+            <div class="col-md-12 mb-2"><input type="email" name="email" placeholder="Correo" class="form-control" required></div>
+            <div class="col-md-12 mb-2"><input type="text" name="eps" placeholder="EPS" class="form-control"></div>
+            <div class="col-md-6 mb-2"><input type="text" name="username" placeholder="Nombre de usuario" class="form-control" required></div>
+            <div class="col-md-6 mb-2"><input type="password" name="password" placeholder="Contraseña" class="form-control" required></div>
+            <div class="col-md-12 mb-2">
+                <select name="rol" class="form-control">
+                    <option value="paciente">Paciente</option>
+                    <option value="medico">Médico</option>
+                    <option value="autorizador">Autorizador</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Registrarse</button>
+        <a href="{% url 'login' %}" class="btn btn-link">Volver</a>
+    </form>
+    {% if messages %}
+        {% for m in messages %}
+            <div class="alert alert-info mt-2">{{ m }}</div>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

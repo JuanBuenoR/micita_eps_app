@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block content %}<h3>Solicitar examen</h3>
+<form method="post">{% csrf_token %}<div class="mb-2"><label>Examen</label><input type="text" name="examen" class="form-control" required></div>
+<div class="mb-2"><label>Motivo</label><textarea name="motivo" class="form-control" rows="3" required></textarea></div>
+<button type="submit" class="btn btn-primary">Enviar</button><a href="{% url 'citas:medico_dashboard' %}" class="btn btn-secondary">Cancelar</a></form>{% endblock %}

@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}<h3>Historia clínica de {{ paciente.get_full_name }}</h3>
+<form method="post">{% csrf_token %}<div class="mb-2"><label>Diagnóstico</label><textarea name="diagnostico" class="form-control" rows="3" required></textarea></div>
+<div class="mb-2"><label>Tratamiento</label><textarea name="tratamiento" class="form-control" rows="3" required></textarea></div>
+<button type="submit" class="btn btn-primary">Guardar</button><a href="{% url 'citas:medico_dashboard' %}" class="btn btn-secondary">Volver</a></form>
+<hr><h4>Registros anteriores</h4><ul class="list-group">{% for h in historias %}<li class="list-group-item"><strong>{{ h.fecha|date:"d/m/Y H:i" }}</strong> - Diagnóstico: {{ h.diagnostico }}<br>Tratamiento: {{ h.tratamiento }}</li>{% empty %}<li class="list-group-item">Sin historias previas</li>{% endfor %}</ul>{% endblock %}

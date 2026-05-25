@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}<h3>Prescribir medicamento</h3>
+<form method="post">{% csrf_token %}<div class="mb-2"><label>Nombre</label><input type="text" name="nombre" class="form-control" required></div>
+<div class="mb-2"><label>Dosis</label><input type="text" name="dosis" class="form-control" required></div>
+<div class="mb-2"><label>Indicaciones</label><textarea name="indicaciones" class="form-control" rows="3" required></textarea></div>
+<button type="submit" class="btn btn-primary">Enviar</button><a href="{% url 'citas:medico_dashboard' %}" class="btn btn-secondary">Cancelar</a></form>{% endblock %}

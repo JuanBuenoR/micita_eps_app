@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Dr. {{ user.get_full_name }}</h2>
+<p>Consultorio: {{ medico.ubicacion_consultorio }}</p>
+<h4>Agenda del día ({{ hoy|date:"d/m/Y" }})</h4>
+<table class="table table-bordered"><thead><tr><th>Hora</th><th>Paciente</th><th>Acciones</th></tr></thead>
+<tbody>{% for cita in citas_hoy %}
+<tr><td>{{ cita.fecha_hora|time:"H:i" }}</td><td>{{ cita.paciente.get_full_name }} ({{ cita.paciente.perfilusuario.documento }})</td>
+<td><a href="{% url 'citas:historia_clinica' cita.paciente.id %}" class="btn btn-sm btn-primary">Historia</a>
+<a href="{% url 'citas:solicitar_especialista' cita.paciente.id %}" class="btn btn-sm btn-warning">Especialista</a>
+<a href="{% url 'citas:solicitar_examen' cita.paciente.id %}" class="btn btn-sm btn-info">Examen</a>
+<a href="{% url 'citas:solicitar_medicamento' cita.paciente.id %}" class="btn btn-sm btn-success">Medicamento</a></td></tr>
+{% empty %}<tr><td colspan="3">No hay citas hoy</td></tr>{% endfor %}
+</tbody></table>{% endblock %}

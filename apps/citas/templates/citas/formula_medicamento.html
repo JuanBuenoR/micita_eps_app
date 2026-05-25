@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}<h3>Fórmula médica</h3><p><strong>Medicamento:</strong> {{ formula.solicitud.medicamento_nombre }}</p>
+<p><strong>Dosis:</strong> {{ formula.solicitud.medicamento_dosis }}</p><p><strong>Indicaciones:</strong> {{ formula.solicitud.medicamento_indicaciones }}</p>
+<p><strong>Fecha emisión:</strong> {{ formula.fecha_emision }}</p><h4>Farmacias autorizadas</h4>
+<div id="map" style="height: 400px; width: 100%;"></div><ul>{% for f in farmacias %}<li><strong>{{ f.nombre }}</strong> - {{ f.direccion }} - Tel: {{ f.telefono }}</li>{% endfor %}</ul>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script>var map = L.map('map').setView([4.6097, -74.0817], 12);L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
+{% for f in farmacias %}L.marker([{{ f.latitud }}, {{ f.longitud }}]).addTo(map).bindPopup("<b>{{ f.nombre }}</b><br>{{ f.direccion }}");{% endfor %}</script>{% endblock %}

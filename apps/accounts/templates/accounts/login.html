@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5" style="max-width: 400px;">
+    <h2 class="text-center">MiCita EPS</h2>
+    <div class="card shadow p-4">
+        <h4>Iniciar sesión</h4>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label>Usuario</label>
+                <input type="text" name="username" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>Contraseña</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+        </form>
+        <hr>
+        <a href="{% url 'registro' %}" class="btn btn-outline-secondary w-100">Crear nuevo usuario</a>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger mt-3">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

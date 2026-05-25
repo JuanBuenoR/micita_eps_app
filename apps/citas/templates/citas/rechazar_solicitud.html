@@ -1,0 +1,4 @@
+{% extends "base.html" %}
+{% block content %}<h3>Rechazar solicitud</h3><p><strong>Paciente:</strong> {{ solicitud.paciente.get_full_name }}</p><p><strong>Tipo:</strong> {{ solicitud.get_tipo_display }}</p><p><strong>Detalle:</strong> {{ solicitud.descripcion }}</p>
+<form method="post">{% csrf_token %}<div class="mb-2"><label>Motivo</label><textarea name="motivo" class="form-control" rows="3" required></textarea></div>
+<button type="submit" class="btn btn-danger">Rechazar</button><a href="{% url 'citas:autorizador_dashboard' %}" class="btn btn-secondary">Cancelar</a></form>{% endblock %}

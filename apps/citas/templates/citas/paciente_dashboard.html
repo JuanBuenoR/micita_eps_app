@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row"><div class="col-md-8">
+<h2>Bienvenido, {{ user.get_full_name }}</h2>
+<p>Documento: {{ perfil.documento }} | EPS: {{ perfil.eps }}</p>
+<div class="card mt-3"><div class="card-header">Agendar cita de medicina general</div><div class="card-body"><a href="{% url 'citas:agendar_cita' %}" class="btn btn-success">Nueva cita</a></div></div>
+<div class="card mt-3"><div class="card-header">Mis próximas citas</div><ul class="list-group list-group-flush">
+{% for cita in citas_futuras %}
+<li class="list-group-item">{{ cita.fecha_hora|date:"d/m/Y H:i" }} - Dr. {{ cita.medico.user.get_full_name }} ({{ cita.tipo }})
+<a href="{% url 'citas:cancelar_cita' cita.id %}" class="btn btn-sm btn-danger float-end">Cancelar</a></li>
+{% empty %}<li class="list-group-item">No tienes citas programadas.</li>{% endfor %}
+</ul></div>
+<div class="card mt-3"><div class="card-header">Citas de especialista aprobadas</div><ul class="list-group">
+{% for sol in solicitudes_aprobadas %}<li class="list-group-item">Especialidad: {{ sol.especialidad_solicitada }} - {{ sol.descripcion }}</li>
+{% empty %}<li class="list-group-item">No hay aprobaciones pendientes.</li>{% endfor %}
+</ul></div>
+<div class="card mt-3"><div class="card-header">Mis fórmulas médicas</div><ul class="list-group">
+{% for f in formulas %}<li class="list-group-item">Medicamento: {{ f.solicitud.medicamento_nombre }} <a href="{% url 'citas:ver_formula' f.id %}" class="btn btn-sm btn-info float-end">Ver detalle y farmacias</a></li>
+{% empty %}<li class="list-group-item">No tienes medicamentos recetados.</li>{% endfor %}
+</ul></div>
+</div></div>
+{% endblock %}

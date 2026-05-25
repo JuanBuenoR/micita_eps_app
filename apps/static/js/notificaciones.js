@@ -1,0 +1,1 @@
+document.addEventListener('DOMContentLoaded',function(){if('Notification'in window){Notification.requestPermission();console.log('Push simulado activo');}});

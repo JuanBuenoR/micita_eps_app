@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h3>Editar perfil</h3>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-2"><label>Nombres (no editable)</label><input type="text" value="{{ request.user.first_name }}" class="form-control" disabled></div>
+        <div class="mb-2"><label>Documento (no editable)</label><input type="text" value="{{ perfil.documento }}" class="form-control" disabled></div>
+        <div class="mb-2"><label>Teléfono</label><input type="text" name="telefono" value="{{ perfil.telefono }}" class="form-control"></div>
+        <div class="mb-2"><label>Dirección</label><textarea name="direccion" class="form-control">{{ perfil.direccion }}</textarea></div>
+        <div class="mb-2"><label>EPS</label><input type="text" name="eps" value="{{ perfil.eps }}" class="form-control"></div>
+        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+        <a href="javascript:history.back()" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
